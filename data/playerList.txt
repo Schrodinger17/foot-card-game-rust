@@ -1,0 +1,21 @@
+15
+Pedro Chirivella,false
+Roli Pereira de Sa,false
+Nicolas Pallois,false
+Alban Lafont,false
+Andrei Girotto,false
+Fábio,false
+Sébastien Corchia,false
+Dennis Appiah,false
+Quentin Merlin,false
+Samuel Moutoussamy,false
+Osman Bukari,false
+Marcus Coco,false
+Ludovic Blas,false
+Randal Kolo Muani,false
+Renaud Emond,false
+3
+Louise,10000,0
+Jerome,10000,0
+0
+0
