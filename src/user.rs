@@ -1,17 +1,20 @@
-use crate::card::Card;
+use serde::{Deserialize, Serialize};
+
+use crate::{card::Card, id::Id};
 
 static STARTING_MONEY: u32 = 10000;
 
-#[derive(Debug, Default, Clone, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, PartialEq, Eq, Serialize, Deserialize)]
 enum UserRole {
     #[default]
     Standard,
     Admin,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct User {
     pub username: String,
+    id: u32,
     password: Option<String>,
     role: UserRole,
     cards: Vec<Card>,
@@ -22,10 +25,8 @@ impl User {
     pub fn new(username: &str, password: Option<&str>) -> Self {
         Self {
             username: username.to_owned(),
-            password: match password {
-                Some(password) => Some(password.to_owned()),
-                None => None,
-            },
+            id: Id::new_u32(),
+            password: password.map(|password| password.to_owned()),
             role: UserRole::Standard,
             cards: Vec::new(),
             money: STARTING_MONEY,
@@ -34,6 +35,7 @@ impl User {
     pub fn admin(username: &str, password: &str) -> Self {
         Self {
             username: username.to_owned(),
+            id: Id::new_u32(),
             password: Some(password.to_owned()),
             role: UserRole::Admin,
             cards: Vec::new(),

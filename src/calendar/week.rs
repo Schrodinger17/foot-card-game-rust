@@ -1,11 +1,10 @@
-use crate::matches::Match;
-use crate::player::Player;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone, Default, PartialEq, Eq, Deserialize, Serialize)]
 pub struct Week {
     week: u32,
-    active_players: Vec<Player>,
-    matches: Vec<Match>,
+    active_players: Vec<u32>,
+    matches: Vec<u32>,
 }
 
 impl Week {

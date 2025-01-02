@@ -9,7 +9,7 @@ pub struct TextFile {
 
 impl TextFile {
     pub fn new(path: PathBuf) -> Result<TextFile, TextFileError> {
-        match File::open(&path) {
+        match File::open(path) {
             Ok(file) => Ok(TextFile { file }),
             Err(e) => Err(TextFileError::Io(e)),
         }
@@ -28,6 +28,7 @@ impl TextFile {
 pub enum TextFileError {
     Io(std::io::Error),
     Parse,
+    Write(serde_json::Error),
 }
 
 impl Display for TextFileError {

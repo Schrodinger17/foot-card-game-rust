@@ -2,6 +2,7 @@ mod calendar;
 mod card;
 mod data;
 mod data_manager;
+mod id;
 mod id_manager;
 mod matches;
 mod player;

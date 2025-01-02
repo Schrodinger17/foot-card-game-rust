@@ -1,4 +1,7 @@
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+use serde::{Deserialize, Serialize};
+use uuid::Uuid;
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum Role {
     Defense,
     Goal,
@@ -6,14 +9,19 @@ pub enum Role {
     Frontline,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Player {
     pub name: String,
+    id: u32,
     role: Role,
 }
 
 impl Player {
     pub fn new(name: String, role: Role) -> Self {
-        Self { name, role }
+        Self {
+            name,
+            id: Uuid::new_v4().as_u128() as u32,
+            role,
+        }
     }
 }

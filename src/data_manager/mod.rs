@@ -1,3 +1,4 @@
+pub mod json;
 pub mod text_file;
 
 use crate::data::Data;

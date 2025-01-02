@@ -1,6 +1,8 @@
-use super::week::{self, Week};
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, Default)]
+use super::week::Week;
+
+#[derive(Debug, Clone, Default, PartialEq, Eq, Deserialize, Serialize)]
 pub struct Year {
     year: u32,
     weeks: Vec<Week>,

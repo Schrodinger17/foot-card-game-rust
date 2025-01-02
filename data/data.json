@@ -1,0 +1,35 @@
+{
+    "calendar": {
+        "now": {
+            "year": 0,
+            "week": 0
+        },
+        "years": []
+    },
+    "users": [
+        {
+            "username": "Tristan",
+            "password": "password",
+            "role": "Admin",
+            "cards": [],
+            "money": 4294967295
+        },
+        {
+            "username": "louise",
+            "password": null,
+            "role": "Standard",
+            "cards": [],
+            "money": 10000
+        },
+        {
+            "username": "louise",
+            "password": null,
+            "role": "Standard",
+            "cards": [],
+            "money": 10000
+        }
+    ],
+    "players": [],
+    "cards": [],
+    "matches": []
+}
