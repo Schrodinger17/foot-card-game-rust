@@ -14,11 +14,10 @@ pub struct Calendar {
 }
 
 impl Calendar {
-    pub fn new(year: u32, week: u32) -> Self {
-        assert!(week < 52, "Week must be less than 52");
+    pub fn new(date: Date) -> Self {
         Self {
-            now: Date::new(year, week),
-            years: vec![Year::new(year)],
+            now: date,
+            years: vec![Year::new(date.year())],
         }
     }
 }

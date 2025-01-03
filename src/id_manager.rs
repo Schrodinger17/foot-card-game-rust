@@ -1,4 +1,3 @@
-use std::ops::{Deref, DerefMut};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct IdManager {

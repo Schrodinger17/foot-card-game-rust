@@ -2,7 +2,7 @@ use std::fmt::Display;
 
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, Default, PartialEq, Eq, Deserialize, Serialize)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Deserialize, Serialize)]
 pub struct Date {
     year: u32,
     week: u32,
@@ -10,17 +10,21 @@ pub struct Date {
 
 impl Date {
     pub fn new(year: u32, week: u32) -> Date {
+        assert!(week < 52, "Week must be less than 52");
         Date { year, week }
     }
 
+    #[allow(unused)]
     pub fn year(&self) -> u32 {
         self.year
     }
 
+    #[allow(unused)]
     pub fn week(&self) -> u32 {
         self.week
     }
 
+    #[allow(unused)]
     pub fn next(&self) -> Date {
         match (self.year, self.week) {
             (year, 52) => Date {
@@ -28,12 +32,13 @@ impl Date {
                 week: 0,
             },
             (year, week) => Date {
-                year: year,
+                year,
                 week: week + 1,
             },
         }
     }
 
+    #[allow(unused)]
     pub fn prev(&self) -> Date {
         match (self.year, self.week) {
             (0, 0) => panic!("Can't go before J.C. !"),
@@ -42,7 +47,7 @@ impl Date {
                 week: 52,
             },
             (year, week) => Date {
-                year: year,
+                year,
                 week: week - 1,
             },
         }

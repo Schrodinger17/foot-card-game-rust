@@ -1,4 +1,4 @@
-use crate::calendar::{date::Date, Calendar};
+use crate::calendar::date::Date;
 use crate::data::Data;
 use crate::data_manager::json::Json;
 use crate::data_manager::DataManager;
@@ -15,9 +15,10 @@ pub struct Server {
 
 impl Server {
     pub fn new(year: u32, week: u32) -> Self {
+        let date = Date::new(year, week);
         Server {
-            data: Data::default(),
-            date: Date::new(year, week),
+            data: Data::new(date),
+            date,
             logged_user: None,
         }
     }
@@ -63,7 +64,7 @@ impl Server {
     }
 
     pub fn load(&mut self) {
-        let data_path = PathBuf::from("data/playerList.txt".to_owned());
+        let data_path = PathBuf::from("data/data.json".to_owned());
 
         let data_manager = Json::new(data_path);
         self.data = match data_manager.load() {

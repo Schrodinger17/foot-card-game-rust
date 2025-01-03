@@ -3,7 +3,6 @@ mod card;
 mod data;
 mod data_manager;
 mod id;
-mod id_manager;
 mod matches;
 mod player;
 mod server;
@@ -13,9 +12,9 @@ mod user;
 use server::Server;
 
 fn main() {
-    let mut server = Server::default();
+    let mut server = Server::new(2025, 0);
 
-    //server.load_data();
+    server.load();
 
     server.start();
 }

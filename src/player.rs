@@ -17,6 +17,7 @@ pub struct Player {
 }
 
 impl Player {
+    #[allow(unused)]
     pub fn new(name: String, role: Role) -> Self {
         Self {
             name,

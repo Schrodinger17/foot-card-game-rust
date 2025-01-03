@@ -15,10 +15,12 @@ impl Json {
     }
 }
 
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+#[allow(unused)]
 struct JsonError;
 
 impl DataManager for Json {
-    fn load(&self) -> Result<Data, TextFileError> {
+    fn load(&self) -> Result<Data, impl std::error::Error> {
         let file = match File::open(&self.path) {
             Ok(file) => file,
             Err(e) => return Err(TextFileError::Io(e)),
@@ -29,7 +31,7 @@ impl DataManager for Json {
         }
     }
 
-    fn save(&mut self, data: Data) -> Result<(), TextFileError> {
+    fn save(&mut self, data: Data) -> Result<(), impl std::error::Error> {
         let file = match File::create(&self.path) {
             Ok(file) => file,
             Err(e) => return Err(TextFileError::Io(e)),

@@ -1,5 +1,6 @@
-use crate::player::Player;
+use serde::{Deserialize, Serialize};
 
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Team {
-    players: Vec<Player>,
+    players: Vec<u32>,
 }
